@@ -21,3 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Instagram"
 include(":app")
+include(":feature:login")
+include(":core")
+include(":common")
