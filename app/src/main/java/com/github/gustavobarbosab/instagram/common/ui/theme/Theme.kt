@@ -9,35 +9,96 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+// Instagram Light Theme
+private val InstagramLightColorScheme = lightColorScheme(
+    primary = InstagramBlue,
+    onPrimary = White,
+    primaryContainer = LightBlue,
+    onPrimaryContainer = DarkBlue,
+    
+    secondary = InstagramGradientStart,
+    onSecondary = White,
+    secondaryContainer = LightPurple,
+    onSecondaryContainer = DarkPurple,
+    
+    tertiary = InstagramGradientMiddle,
+    onTertiary = White,
+    tertiaryContainer = LightPink,
+    onTertiaryContainer = DarkPink,
+    
+    background = White,
+    onBackground = Black,
+    surface = White,
+    onSurface = Black,
+    surfaceVariant = LightGray,
+    onSurfaceVariant = DarkGray,
+    
+    outline = LightGray,
+    outlineVariant = VeryLightGray,
+    
+    error = ErrorRed,
+    onError = White,
+    errorContainer = LightRed,
+    onErrorContainer = DarkRed,
+    
+    inverseSurface = Black,
+    inverseOnSurface = White,
+    inversePrimary = LightBlue,
+    
+    surfaceTint = InstagramBlue,
+    scrim = Black
 )
 
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+// Instagram Dark Theme
+private val InstagramDarkColorScheme = darkColorScheme(
+    primary = LightBlue,
+    onPrimary = DarkBlue,
+    primaryContainer = DarkBlue,
+    onPrimaryContainer = LightBlue,
+    
+    secondary = LightPurple,
+    onSecondary = DarkPurple,
+    secondaryContainer = DarkPurple,
+    onSecondaryContainer = LightPurple,
+    
+    tertiary = LightPink,
+    onTertiary = DarkPink,
+    tertiaryContainer = DarkPink,
+    onTertiaryContainer = LightPink,
+    
+    background = DarkBackground,
+    onBackground = White,
+    surface = DarkSurface,
+    onSurface = White,
+    surfaceVariant = DarkGray,
+    onSurfaceVariant = LightGray,
+    
+    outline = DarkGray,
+    outlineVariant = VeryDarkGray,
+    
+    error = LightRed,
+    onError = DarkRed,
+    errorContainer = DarkRed,
+    onErrorContainer = LightRed,
+    
+    inverseSurface = White,
+    inverseOnSurface = DarkBackground,
+    inversePrimary = InstagramBlue,
+    
+    surfaceTint = LightBlue,
+    scrim = Black
 )
 
 @Composable
 fun InstagramTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false, // Disabled to use Instagram branding
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -45,14 +106,23 @@ fun InstagramTheme(
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        darkTheme -> InstagramDarkColorScheme
+        else -> InstagramLightColorScheme
+    }
+    
+    val view = LocalView.current
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as Activity).window
+            window.statusBarColor = colorScheme.primary.toArgb()
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+        }
     }
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = InstagramTypography,
+        shapes = InstagramShapes,
         content = content
     )
 }

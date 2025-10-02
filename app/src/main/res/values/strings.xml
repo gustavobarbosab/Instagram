@@ -10,6 +10,7 @@
     <string name="results_placeholder">(Results will appear here)</string>
     <string name="toolbar_icons_logo_content_description">App logo</string>
     <string name="toolbar_icons_chat_content_description">Chat Icon</string>
+    <string name="toolbar_icons_hearth_content_description">News Icon</string>
     <string name="toolbar_icons_back_content_description">Back Icon</string>
     <string name="toolbar_icons_close_content_description">Close Icon</string>
 </resources>

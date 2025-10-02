@@ -4,7 +4,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.outlined.Email
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
@@ -54,11 +55,21 @@ sealed class ToolbarIcons {
     data object Chat : ToolbarIcons(), Right {
         override val painter: Painter
             @Composable
-            get() = rememberVectorPainter(Icons.Filled.Email)
+            get() = rememberVectorPainter(Icons.Outlined.Email)
 
         override val contentDescription: String
             @Composable
             get() = stringResource(R.string.toolbar_icons_chat_content_description)
+    }
+
+    data object Hearth : ToolbarIcons(), Right {
+        override val painter: Painter
+            @Composable
+            get() = rememberVectorPainter(Icons.Outlined.FavoriteBorder)
+
+        override val contentDescription: String
+            @Composable
+            get() = stringResource(R.string.toolbar_icons_hearth_content_description)
     }
 
     data object Logo : ToolbarIcons() {
