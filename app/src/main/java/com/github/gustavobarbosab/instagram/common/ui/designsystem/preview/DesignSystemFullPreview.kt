@@ -13,43 +13,48 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
 import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramTheme
+import com.github.gustavobarbosab.instagram.common.ui.theme.composition.spacing
 
 @ThemePreview
 @Composable
 private fun FullPreview() {
     InstagramTheme {
-        Column(
-            modifier = Modifier
+        Surface(
+            Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
                 .windowInsetsPadding(WindowInsets.statusBars)
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Color Palette
-            ColorPalettePreview()
-            SectionDivider()
+            Column(
+                modifier = Modifier.padding(MaterialTheme.spacing.space16),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                // Color Palette
+                ColorPalettePreview()
+                SectionDivider()
 
-            // Typography
-            TypographySection()
-            SectionDivider()
+                // Typography
+                TypographySection()
+                SectionDivider()
 
-            // Components
-            ComponentsPreview()
-            SectionDivider()
+                // Components
+                ComponentsPreview()
+                SectionDivider()
 
-            // Buttons
-            ButtonsPreview()
-            SectionDivider()
+                // Buttons
+                ButtonsPreview()
+                SectionDivider()
 
-            // Cards
-            CardsPreview()
-            SectionDivider()
+                // Cards
+                CardsPreview()
+                SectionDivider()
+            }
         }
     }
 }

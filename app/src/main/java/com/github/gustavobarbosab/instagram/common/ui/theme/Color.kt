@@ -49,7 +49,7 @@ val InstagramGradientEnd = Color(0xFFFCB045)     // Orange
 
 // Primary Colors (Instagram Blue)
 val LightBlue = Color(0xFF4FC3F7)
-val DarkBlue = Color(0xFF0277BD)
+val DarkBlue = Color(0xFF004569)
 
 // Secondary Colors (Instagram Purple)
 val LightPurple = Color(0xFFB39DDB)
@@ -62,7 +62,7 @@ val DarkPink = Color(0xFFC2185B)
 // Neutral Colors
 val White = Color(0xFFFFFFFF)
 val VeryLightGray = Color(0xFFFAFAFA)
-val LightGray = Color(0xFFF5F5F5)
+val LightGray = Color(0xFFEEEEEE)
 val DarkGray = Color(0xFF8E8E8E)
 val VeryDarkGray = Color(0xFF424242)
 val Black = Color(0xFF000000)

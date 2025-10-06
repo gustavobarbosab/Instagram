@@ -13,15 +13,6 @@ import androidx.compose.ui.unit.dp
  * - MaterialTheme.shapes.medium (12dp radius)
  * - MaterialTheme.shapes.large (16dp radius)
  * - MaterialTheme.shapes.extraLarge (28dp radius)
- *
- * ### Custom Instagram Shapes
- * - InstagramButtonShape (8dp radius)
- * - InstagramCardShape (12dp radius)
- * - InstagramTextFieldShape (8dp radius)
- * - InstagramLogoShape (20dp radius)
- * - InstagramBottomSheetShape (16dp top radius)
- * - InstagramDialogShape (16dp radius)
- *
  */
 val InstagramShapes = Shapes(
     extraSmall = RoundedCornerShape(4.dp),
