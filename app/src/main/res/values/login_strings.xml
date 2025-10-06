@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_username_label">Phone number, username, or email</string>
+    <string name="login_username_icon_description">Email</string>
+    <string name="login_password_hidden">Password hidden</string>
+    <string name="login_password_visible">Password visible</string>
+    <string name="login_password_label">Password</string>
+    <string name="login_button">Log In</string>
+    <string name="login_forgot_password">Forgot your login details? Get help here.</string>
+    <string name="login_facebook_method">Facebook</string>
+    <string name="login_sign_up_question">Don\'t have an account?</string>
+    <string name="login_sign_up">Sign up</string>
+</resources>

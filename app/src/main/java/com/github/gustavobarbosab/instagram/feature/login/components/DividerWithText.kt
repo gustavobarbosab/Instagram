@@ -9,6 +9,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
+import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramTheme
 import com.github.gustavobarbosab.instagram.common.ui.theme.composition.sizing
 import com.github.gustavobarbosab.instagram.common.ui.theme.composition.spacing
 
@@ -37,6 +40,16 @@ fun DividerWithText(
             modifier = Modifier.weight(1f),
             color = MaterialTheme.colorScheme.onBackground,
             thickness = MaterialTheme.sizing.size1
+        )
+    }
+}
+
+@ThemePreview
+@Composable
+private fun Preview() {
+    InstagramTheme {
+        DividerWithText(
+            text = "OR"
         )
     }
 }

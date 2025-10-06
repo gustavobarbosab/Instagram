@@ -9,7 +9,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
 import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramTheme
 
 @Composable
@@ -37,10 +37,14 @@ fun SignUpPrompt(
     }
 }
 
-@Preview
+@ThemePreview
 @Composable
 private fun Preview() {
     InstagramTheme {
-
+        SignUpPrompt(
+            questionLabel = "Don't have an account?",
+            signUpLabel = "Sign up",
+            onSignUpClick = {}
+        )
     }
 }

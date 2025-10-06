@@ -24,11 +24,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.unit.dp
+import com.github.gustavobarbosab.instagram.R
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.button.PrimaryButton
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.button.TertiaryButton
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.textfield.InstagramTextField
@@ -92,11 +93,11 @@ fun LoginContent(
                         InstagramTextField(
                             value = uiState.email,
                             onValueChange = onEmailChange,
-                            placeholder = "Phone number, username, or email",
+                            placeholder = stringResource(R.string.login_username_label),
                             leadingIcon = {
                                 Icon(
                                     imageVector = Icons.Default.Email,
-                                    contentDescription = "Email",
+                                    contentDescription = stringResource(R.string.login_username_icon_description),
                                 )
                             },
                             keyboardType = KeyboardType.Email,
@@ -106,17 +107,25 @@ fun LoginContent(
                         InstagramTextField(
                             value = uiState.password,
                             onValueChange = onPasswordChange,
-                            placeholder = "Password",
+                            placeholder = stringResource(R.string.login_password_label),
                             leadingIcon = {
                                 Icon(
                                     imageVector = Icons.Default.Lock,
-                                    contentDescription = "Password",
+                                    contentDescription = stringResource(R.string.login_password_label),
                                 )
                             },
                             trailingIcon = { toggle ->
                                 Icon(
-                                    imageVector = if (toggle) Icons.Default.CheckCircle else Icons.Default.AddCircle,
-                                    contentDescription = if (toggle) "Gone" else "Visible",
+                                    imageVector = if (toggle) {
+                                        Icons.Default.CheckCircle
+                                    } else {
+                                        Icons.Default.AddCircle
+                                    },
+                                    contentDescription = if (toggle) {
+                                        stringResource(R.string.login_password_hidden)
+                                    } else stringResource(
+                                        R.string.login_password_visible
+                                    ),
                                 )
                             },
                             defaultVisualTransformation = PasswordVisualTransformation(),
@@ -127,31 +136,30 @@ fun LoginContent(
                         PrimaryButton(
                             onClick = onLoginClick,
                             enabled = !uiState.isLoading,
-                            text = "Log In",
-                            modifier = Modifier
-                                .fillMaxWidth(),
+                            text = stringResource(R.string.login_button),
+                            modifier = Modifier.fillMaxWidth(),
                         )
 
                         TertiaryButton(
                             onClick = onForgotPasswordClick,
-                            text = "Forgot your login details? Get help here.",
+                            text = stringResource(R.string.login_forgot_password),
                             modifier = Modifier.align(Alignment.CenterHorizontally)
                         )
 
                         DividerWithText("OR")
 
                         SocialNetworkLoginButton(
-                            text = "Facebook",
+                            text = stringResource(R.string.login_facebook_method),
                             onClick = onFacebookLoginClick
                         )
                     }
                 }
 
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(MaterialTheme.spacing.space16))
 
                 SignUpPrompt(
-                    questionLabel = "Don't have an account?",
-                    signUpLabel = "Sign up",
+                    questionLabel = stringResource(R.string.login_sign_up_question),
+                    signUpLabel = stringResource(R.string.login_sign_up),
                     onSignUpClick = onSignUpClick
                 )
             }
