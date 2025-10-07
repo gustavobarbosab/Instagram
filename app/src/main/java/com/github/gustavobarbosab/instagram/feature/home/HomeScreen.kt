@@ -81,7 +81,7 @@ fun HomeScreen(
                 .fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            Text("Hello, I'm the Login!")
+            Text("Hello, I'm the Home!")
         }
     }
 }
