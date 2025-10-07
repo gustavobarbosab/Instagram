@@ -1,4 +1,4 @@
-package com.github.gustavobarbosab.instagram.common.ui.theme.composition
+package com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.composition
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable

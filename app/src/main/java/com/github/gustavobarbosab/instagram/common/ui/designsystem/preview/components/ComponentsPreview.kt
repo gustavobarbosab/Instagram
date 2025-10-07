@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.components.textfield.InstagramTextField
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.components.toolbar.AppToolbar
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
-import com.github.gustavobarbosab.instagram.common.ui.designsystem.toolbar.AppToolbarIcons
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.components.toolbar.AppToolbarIcons
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
 
 @Composable

@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.composition.customColors
-import com.github.gustavobarbosab.instagram.common.ui.theme.composition.sizing
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.composition.sizing
 
 @Composable
 fun SocialNetworkLoginButton(

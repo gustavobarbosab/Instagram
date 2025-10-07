@@ -24,7 +24,7 @@ import com.github.gustavobarbosab.instagram.common.ui.designsystem.preview.compo
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.preview.components.TypographySection
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
-import com.github.gustavobarbosab.instagram.common.ui.theme.composition.spacing
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.composition.spacing
 
 @ThemePreview
 @Composable

@@ -11,8 +11,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
-import com.github.gustavobarbosab.instagram.common.ui.theme.composition.sizing
-import com.github.gustavobarbosab.instagram.common.ui.theme.composition.spacing
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.composition.sizing
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.composition.spacing
 @Composable
 fun DividerWithText(
     text: String,

@@ -1,4 +1,4 @@
-package com.github.gustavobarbosab.instagram.common.ui.theme
+package com.github.gustavobarbosab.instagram.common.ui.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

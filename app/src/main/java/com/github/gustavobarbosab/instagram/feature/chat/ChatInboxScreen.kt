@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.components.toolbar.AppToolbar
-import com.github.gustavobarbosab.instagram.common.ui.designsystem.toolbar.AppToolbarIcons
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.components.toolbar.AppToolbarIcons
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
 import com.github.gustavobarbosab.instagram.core.navigation.Route

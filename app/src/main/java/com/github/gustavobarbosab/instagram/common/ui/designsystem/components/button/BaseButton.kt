@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import com.github.gustavobarbosab.instagram.common.ui.theme.composition.sizing
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.composition.sizing
 
 @Composable
 fun BaseButton(

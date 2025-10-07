@@ -33,8 +33,8 @@ import com.github.gustavobarbosab.instagram.common.ui.designsystem.components.te
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.composition.customColors
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
-import com.github.gustavobarbosab.instagram.common.ui.theme.composition.sizing
-import com.github.gustavobarbosab.instagram.common.ui.theme.composition.spacing
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.composition.sizing
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.composition.spacing
 import com.github.gustavobarbosab.instagram.feature.login.components.DividerWithText
 import com.github.gustavobarbosab.instagram.feature.login.components.SignUpPrompt
 import com.github.gustavobarbosab.instagram.feature.login.components.SocialNetworkLoginButton

@@ -5,8 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Brush
-import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramGradientEnd
-import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramGradientStart
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramGradientEnd
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramGradientStart
 
 
 data class CustomColors(

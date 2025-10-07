@@ -28,7 +28,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
-import com.github.gustavobarbosab.instagram.common.ui.theme.composition.spacing
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.composition.spacing
 @Composable
 fun InstagramTextField(
     value: String,
