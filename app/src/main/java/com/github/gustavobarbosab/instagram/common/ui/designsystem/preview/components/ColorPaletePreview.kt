@@ -1,4 +1,4 @@
-package com.github.gustavobarbosab.instagram.common.ui.designsystem.preview
+package com.github.gustavobarbosab.instagram.common.ui.designsystem.preview.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

@@ -1,4 +1,4 @@
-package com.github.gustavobarbosab.instagram.common.ui.designsystem.components
+package com.github.gustavobarbosab.instagram.common.ui.designsystem.preview
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -17,11 +17,11 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.github.gustavobarbosab.instagram.common.ui.designsystem.preview.ButtonsPreview
-import com.github.gustavobarbosab.instagram.common.ui.designsystem.preview.CardsPreview
-import com.github.gustavobarbosab.instagram.common.ui.designsystem.preview.ColorPalettePreview
-import com.github.gustavobarbosab.instagram.common.ui.designsystem.preview.ComponentsPreview
-import com.github.gustavobarbosab.instagram.common.ui.designsystem.preview.TypographySection
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.preview.components.ButtonsPreview
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.preview.components.CardsPreview
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.preview.components.ColorPalettePreview
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.preview.components.ComponentsPreview
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.preview.components.TypographySection
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
 import com.github.gustavobarbosab.instagram.common.ui.theme.composition.spacing

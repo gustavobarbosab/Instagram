@@ -27,7 +27,7 @@ fun BaseButton(
 ) {
     Button(
         modifier = modifier.heightIn(min = MaterialTheme.sizing.size48),
-        enabled = enabled,
+        enabled = enabled && !isLoading,
         onClick = onClick,
         shape = shapes,
         colors = colors,
@@ -36,7 +36,7 @@ fun BaseButton(
         if (isLoading) {
             CircularProgressIndicator(
                 modifier = Modifier.size(MaterialTheme.sizing.size24),
-                color = MaterialTheme.colorScheme.onPrimary,
+                color = colors.contentColor,
                 strokeWidth = MaterialTheme.sizing.size2
             )
         } else {

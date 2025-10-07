@@ -1,4 +1,4 @@
-package com.github.gustavobarbosab.instagram.common.ui.designsystem.preview
+package com.github.gustavobarbosab.instagram.common.ui.designsystem.preview.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,15 +15,15 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.components.textfield.InstagramTextField
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.components.toolbar.AppToolbar
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
 import com.github.gustavobarbosab.instagram.common.ui.designsystem.toolbar.AppToolbarIcons
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
-import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
 
 @Composable
 internal fun ComponentsPreview() {
@@ -48,10 +48,10 @@ internal fun ComponentsPreview() {
         )
 
         // Text Field
-        OutlinedTextField(
-            value = "",
+        InstagramTextField(
+            value = "Text",
+            placeholder = "Your hint here...",
             onValueChange = {},
-            label = { Text("Username") },
             modifier = Modifier.fillMaxWidth()
         )
 

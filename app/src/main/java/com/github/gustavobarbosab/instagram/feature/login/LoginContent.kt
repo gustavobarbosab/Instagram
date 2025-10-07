@@ -120,7 +120,7 @@ fun LoginContent(
 
                 PrimaryButton(
                     onClick = onLoginClick,
-                    enabled = !uiState.isLoading,
+                    isLoading = uiState.isLoading,
                     text = stringResource(R.string.login_button),
                     modifier = Modifier.fillMaxWidth(),
                 )

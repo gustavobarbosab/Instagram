@@ -14,6 +14,7 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -80,7 +81,11 @@ fun InstagramTextField(
             ),
             enabled = enabled,
             modifier = Modifier.fillMaxWidth(),
-            isError = !errorMessage.isNullOrBlank()
+            isError = !errorMessage.isNullOrBlank(),
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = MaterialTheme.colorScheme.primary,
+                unfocusedBorderColor = MaterialTheme.colorScheme.onBackground,
+            )
         )
 
         if (!errorMessage.isNullOrBlank()) {
