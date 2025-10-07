@@ -1,7 +1,7 @@
 [versions]
 agp = "8.10.1"
-kotlin = "2.0.21"
-coreKtx = "1.16.0"
+kotlin = "2.2.20"
+coreKtx = "1.17.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -12,6 +12,7 @@ composeBom = "2024.09.00"
 hilt = "2.56.2"
 appcompat = "1.6.1"
 material = "1.10.0"
+navigation = "2.9.5"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,13 +34,16 @@ android-hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt"
 android-hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
+kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.9.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 android-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 # This version should match the Kotlin version
-google-ksp = { id = "com.google.devtools.ksp", version = "2.0.21-1.0.27" }
+google-ksp = { id = "com.google.devtools.ksp", version = "2.2.20-2.0.3" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 

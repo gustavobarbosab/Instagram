@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.github.gustavobarbosab.instagram"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.github.gustavobarbosab.instagram"
@@ -59,6 +59,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.kotlinx.serialization)
+    implementation(libs.navigation.compose)
 
     // Hilt dependencies
     implementation(libs.android.hilt)

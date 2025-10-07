@@ -3,11 +3,18 @@ package com.github.gustavobarbosab.instagram
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.remember
+import androidx.navigation.NavGraph
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.createGraph
 import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramTheme
+import com.github.gustavobarbosab.instagram.feature.chat.ChatInboxRoute
+import com.github.gustavobarbosab.instagram.feature.chat.ChatInboxScreen
+import com.github.gustavobarbosab.instagram.feature.home.HomeRoute
+import com.github.gustavobarbosab.instagram.feature.home.HomeScreen
+import com.github.gustavobarbosab.instagram.feature.login.LoginRoute
 import com.github.gustavobarbosab.instagram.feature.login.LoginScreen
 
 class MainActivity : ComponentActivity() {
@@ -15,7 +22,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             InstagramTheme {
-                LoginScreen()
+                val navController = rememberNavController()
+                val navGraph: NavGraph = remember(navController) {
+                    navController.createGraph(startDestination = LoginRoute::class) {
+                        composable(route = LoginRoute::class) { LoginScreen(navController) }
+                        composable(route = HomeRoute::class) { HomeScreen() }
+                        composable(route = ChatInboxRoute::class) { ChatInboxScreen() }
+                    }
+                }
+                NavHost(navController = navController, graph = navGraph)
             }
         }
     }

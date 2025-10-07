@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.stringResource
 import com.github.gustavobarbosab.instagram.R
 
-sealed class ToolbarIcons {
+sealed class AppToolbarIcons {
     abstract val painter: Painter
         @Composable get
     abstract val contentDescription: String
@@ -32,7 +32,7 @@ sealed class ToolbarIcons {
             @Composable get
     }
 
-    data object Back : ToolbarIcons(), Left {
+    data object Back : AppToolbarIcons(), Left {
         override val painter: Painter
             @Composable
             get() = rememberVectorPainter(Icons.AutoMirrored.Default.ArrowBack)
@@ -42,7 +42,7 @@ sealed class ToolbarIcons {
             get() = stringResource(R.string.toolbar_icons_back_content_description)
     }
 
-    data object Close : ToolbarIcons(), Left, Right {
+    data object Close : AppToolbarIcons(), Left, Right {
         override val painter: Painter
             @Composable
             get() = rememberVectorPainter(Icons.Filled.Close)
@@ -52,7 +52,7 @@ sealed class ToolbarIcons {
             get() = stringResource(R.string.toolbar_icons_close_content_description)
     }
 
-    data object Chat : ToolbarIcons(), Right {
+    data object Chat : AppToolbarIcons(), Right {
         override val painter: Painter
             @Composable
             get() = rememberVectorPainter(Icons.Outlined.Email)
@@ -62,7 +62,7 @@ sealed class ToolbarIcons {
             get() = stringResource(R.string.toolbar_icons_chat_content_description)
     }
 
-    data object Hearth : ToolbarIcons(), Right {
+    data object Hearth : AppToolbarIcons(), Right {
         override val painter: Painter
             @Composable
             get() = rememberVectorPainter(Icons.Outlined.FavoriteBorder)
@@ -72,7 +72,7 @@ sealed class ToolbarIcons {
             get() = stringResource(R.string.toolbar_icons_hearth_content_description)
     }
 
-    data object Logo : ToolbarIcons() {
+    data object Logo : AppToolbarIcons() {
         override val painter: Painter
             @Composable
             get() = rememberVectorPainter(Icons.Default.AccountBox)

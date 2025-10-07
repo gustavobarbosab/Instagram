@@ -34,11 +34,11 @@ class LoginViewModel @Inject constructor() : ViewModel() {
 
     fun login() {
         val currentState = _uiState.value
-        
+
         // Validate form
         val emailError = validateEmail(currentState.email)
         val passwordError = validatePassword(currentState.password)
-        
+
         if (emailError != null || passwordError != null) {
             _uiState.value = currentState.copy(
                 emailError = emailError,
@@ -48,16 +48,19 @@ class LoginViewModel @Inject constructor() : ViewModel() {
         }
 
         // Start loading
-        _uiState.value = currentState.copy(isLoading = true, errorMessage = null)
+        _uiState.value = currentState.copy(
+            isLoading = true,
+            errorMessage = null
+        )
 
         viewModelScope.launch {
             try {
                 // Simulate network call
                 delay(2000)
-                
+
                 // Mock login logic - replace with actual API call
                 val loginSuccess = performLogin(currentState.email, currentState.password)
-                
+
                 if (loginSuccess) {
                     _uiState.value = _uiState.value.copy(
                         isLoading = false,
@@ -80,16 +83,17 @@ class LoginViewModel @Inject constructor() : ViewModel() {
     }
 
     fun loginWithFacebook() {
-        _uiState.value = _uiState.value.copy(isLoading = true, errorMessage = null)
-        
+        _uiState.value = _uiState.value.copy(
+            isLoading = true,
+            errorMessage = null
+        )
+
         viewModelScope.launch {
             try {
-                // Simulate Facebook login
                 delay(1500)
-                
-                // Mock Facebook login - replace with actual Facebook SDK integration
+
                 val facebookLoginSuccess = performFacebookLogin()
-                
+
                 if (facebookLoginSuccess) {
                     _uiState.value = _uiState.value.copy(
                         isLoading = false,
@@ -119,14 +123,12 @@ class LoginViewModel @Inject constructor() : ViewModel() {
         )
     }
 
-    fun clearError() {
-        _uiState.value = _uiState.value.copy(errorMessage = null)
-    }
-
     private fun validateEmail(email: String): String? {
         return when {
             email.isBlank() -> "Email is required"
-            !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() -> "Please enter a valid email address"
+            !android.util.Patterns.EMAIL_ADDRESS.matcher(email)
+                .matches() -> "Please enter a valid email address"
+
             else -> null
         }
     }
@@ -139,12 +141,12 @@ class LoginViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-    private suspend fun performLogin(email: String, password: String): Boolean {
+    private fun performLogin(email: String, password: String): Boolean {
         // Mock login - replace with actual API call
-        return email.isNotEmpty() && password.isNotEmpty() && password.length >= 6
+        return email.isNotEmpty() && password.isNotEmpty() && password.length >= 6 && password == "123456"
     }
 
-    private suspend fun performFacebookLogin(): Boolean {
+    private fun performFacebookLogin(): Boolean {
         // Mock Facebook login - replace with actual Facebook SDK integration
         return true
     }
