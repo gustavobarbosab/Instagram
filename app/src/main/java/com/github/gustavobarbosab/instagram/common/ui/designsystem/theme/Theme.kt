@@ -1,4 +1,4 @@
-package com.github.gustavobarbosab.instagram.common.ui.theme
+package com.github.gustavobarbosab.instagram.common.ui.designsystem.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -11,8 +11,30 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalContext
-import com.github.gustavobarbosab.instagram.common.ui.theme.composition.CustomColors
-import com.github.gustavobarbosab.instagram.common.ui.theme.composition.LocalCustomColors
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.composition.CustomColors
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.composition.LocalCustomColors
+import com.github.gustavobarbosab.instagram.common.ui.theme.Black
+import com.github.gustavobarbosab.instagram.common.ui.theme.DarkBackground
+import com.github.gustavobarbosab.instagram.common.ui.theme.DarkBlue
+import com.github.gustavobarbosab.instagram.common.ui.theme.DarkGray
+import com.github.gustavobarbosab.instagram.common.ui.theme.DarkPink
+import com.github.gustavobarbosab.instagram.common.ui.theme.DarkPurple
+import com.github.gustavobarbosab.instagram.common.ui.theme.DarkRed
+import com.github.gustavobarbosab.instagram.common.ui.theme.DarkSurface
+import com.github.gustavobarbosab.instagram.common.ui.theme.ErrorRed
+import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramBlue
+import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramGradientMiddle
+import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramGradientStart
+import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramShapes
+import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramTypography
+import com.github.gustavobarbosab.instagram.common.ui.theme.LightBlue
+import com.github.gustavobarbosab.instagram.common.ui.theme.LightGray
+import com.github.gustavobarbosab.instagram.common.ui.theme.LightPink
+import com.github.gustavobarbosab.instagram.common.ui.theme.LightPurple
+import com.github.gustavobarbosab.instagram.common.ui.theme.LightRed
+import com.github.gustavobarbosab.instagram.common.ui.theme.VeryDarkGray
+import com.github.gustavobarbosab.instagram.common.ui.theme.VeryLightGray
+import com.github.gustavobarbosab.instagram.common.ui.theme.White
 import com.github.gustavobarbosab.instagram.common.ui.theme.composition.LocalSpacing
 import com.github.gustavobarbosab.instagram.common.ui.theme.composition.Spacing
 

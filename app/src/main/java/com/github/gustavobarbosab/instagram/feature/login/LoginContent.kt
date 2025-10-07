@@ -27,12 +27,12 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import com.github.gustavobarbosab.instagram.R
-import com.github.gustavobarbosab.instagram.common.ui.designsystem.button.PrimaryButton
-import com.github.gustavobarbosab.instagram.common.ui.designsystem.button.TertiaryButton
-import com.github.gustavobarbosab.instagram.common.ui.designsystem.textfield.InstagramTextField
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.components.button.PrimaryButton
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.components.button.TertiaryButton
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.components.textfield.InstagramTextField
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.composition.customColors
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
-import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramTheme
-import com.github.gustavobarbosab.instagram.common.ui.theme.composition.customColors
 import com.github.gustavobarbosab.instagram.common.ui.theme.composition.sizing
 import com.github.gustavobarbosab.instagram.common.ui.theme.composition.spacing
 import com.github.gustavobarbosab.instagram.feature.login.components.DividerWithText

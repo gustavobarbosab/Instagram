@@ -2,7 +2,6 @@ package com.github.gustavobarbosab.instagram.common.ui.preview
 
 import android.content.res.Configuration
 import androidx.compose.ui.tooling.preview.Preview
-import com.github.gustavobarbosab.instagram.common.ui.theme.DarkGray
 
 
 @Preview(

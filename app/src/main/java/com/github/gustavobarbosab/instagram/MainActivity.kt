@@ -10,7 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.createGraph
-import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramTheme
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
 import com.github.gustavobarbosab.instagram.feature.chat.ChatInboxRoute
 import com.github.gustavobarbosab.instagram.feature.chat.ChatInboxScreen
 import com.github.gustavobarbosab.instagram.feature.home.HomeRoute

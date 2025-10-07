@@ -16,11 +16,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.github.gustavobarbosab.instagram.common.ui.designsystem.button.PrimaryButton
-import com.github.gustavobarbosab.instagram.common.ui.designsystem.button.SecondaryButton
-import com.github.gustavobarbosab.instagram.common.ui.designsystem.button.TertiaryButton
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.components.button.PrimaryButton
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.components.button.SecondaryButton
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.components.button.TertiaryButton
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
-import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramTheme
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
 
 @Composable
 internal fun ButtonsPreview() {

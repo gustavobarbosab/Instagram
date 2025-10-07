@@ -1,4 +1,4 @@
-package com.github.gustavobarbosab.instagram.common.ui.designsystem.button
+package com.github.gustavobarbosab.instagram.common.ui.designsystem.components.button
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.heightIn

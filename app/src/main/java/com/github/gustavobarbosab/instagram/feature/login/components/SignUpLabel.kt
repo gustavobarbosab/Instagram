@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
-import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramTheme
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
 
 @Composable
 fun SignUpPrompt(

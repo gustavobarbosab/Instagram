@@ -1,4 +1,4 @@
-package com.github.gustavobarbosab.instagram.common.ui.designsystem.textfield
+package com.github.gustavobarbosab.instagram.common.ui.designsystem.components.textfield
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -26,10 +26,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
-import com.github.gustavobarbosab.instagram.common.ui.theme.ErrorRed
-import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramTheme
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
 import com.github.gustavobarbosab.instagram.common.ui.theme.composition.spacing
-
 @Composable
 fun InstagramTextField(
     value: String,
@@ -88,7 +86,7 @@ fun InstagramTextField(
         if (!errorMessage.isNullOrBlank()) {
             Text(
                 text = errorMessage,
-                color = ErrorRed,
+                color = MaterialTheme.colorScheme.error,
                 style = MaterialTheme.typography.labelLarge,
                 modifier = Modifier.padding(
                     start = MaterialTheme.spacing.space8,

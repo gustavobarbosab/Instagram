@@ -1,4 +1,4 @@
-package com.github.gustavobarbosab.instagram.common.ui.designsystem.toolbar
+package com.github.gustavobarbosab.instagram.common.ui.designsystem.components.toolbar
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,7 +23,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
-import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramTheme
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.toolbar.AppToolbarIcons
 
 private const val MAX_HEIGHT = 56
 private const val MIN_ICON_WIDTH = 56

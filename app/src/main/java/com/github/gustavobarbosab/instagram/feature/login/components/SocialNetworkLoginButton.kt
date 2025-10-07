@@ -9,8 +9,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.github.gustavobarbosab.instagram.common.ui.preview.ThemePreview
-import com.github.gustavobarbosab.instagram.common.ui.theme.InstagramTheme
-import com.github.gustavobarbosab.instagram.common.ui.theme.composition.customColors
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.InstagramTheme
+import com.github.gustavobarbosab.instagram.common.ui.designsystem.theme.composition.customColors
 import com.github.gustavobarbosab.instagram.common.ui.theme.composition.sizing
 
 @Composable
