@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.NavOptions
 import com.github.gustavobarbosab.instagram.common.extensions.isNotNullOrBlank
 import com.github.gustavobarbosab.instagram.core.navigation.Route
 import com.github.gustavobarbosab.instagram.feature.home.HomeRoute

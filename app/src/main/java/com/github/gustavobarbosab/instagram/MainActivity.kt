@@ -26,8 +26,8 @@ class MainActivity : ComponentActivity() {
                 val navGraph: NavGraph = remember(navController) {
                     navController.createGraph(startDestination = LoginRoute::class) {
                         composable(route = LoginRoute::class) { LoginScreen(navController) }
-                        composable(route = HomeRoute::class) { HomeScreen() }
-                        composable(route = ChatInboxRoute::class) { ChatInboxScreen() }
+                        composable(route = HomeRoute::class) { HomeScreen(navController) }
+                        composable(route = ChatInboxRoute::class) { ChatInboxScreen(navController) }
                     }
                 }
                 NavHost(navController = navController, graph = navGraph)

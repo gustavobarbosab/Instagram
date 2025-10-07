@@ -17,3 +17,14 @@ import com.github.gustavobarbosab.instagram.common.ui.theme.DarkGray
     backgroundColor = 0xFF000000
 )
 annotation class ThemePreview
+
+
+@Preview(
+    name = "Big Screen",
+    device = "id:pixel_9_pro_xl", showSystemUi = true,
+)
+@Preview(
+    name = "Medium screen",
+    device = "spec:width=411dp,height=891dp", showSystemUi = true,
+)
+annotation class ScreenSizePreview
