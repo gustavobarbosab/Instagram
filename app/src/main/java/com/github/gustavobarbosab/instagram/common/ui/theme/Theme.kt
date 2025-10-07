@@ -1,6 +1,5 @@
 package com.github.gustavobarbosab.instagram.common.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.LocalContentColor
@@ -11,11 +10,7 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalView
-import androidx.core.view.WindowCompat
 import com.github.gustavobarbosab.instagram.common.ui.theme.composition.CustomColors
 import com.github.gustavobarbosab.instagram.common.ui.theme.composition.LocalCustomColors
 import com.github.gustavobarbosab.instagram.common.ui.theme.composition.LocalSpacing
