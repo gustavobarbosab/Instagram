@@ -35,8 +35,8 @@ private const val MIN_ICON_WIDTH = 56
 @Composable
 fun AppToolbar(
     modifier: Modifier = Modifier,
-    startContent: @Composable BoxScope.() -> Unit = { },
-    endContent: @Composable BoxScope.() -> Unit = { },
+    startContent: (@Composable BoxScope.() -> Unit)? = null,
+    endContent: (@Composable BoxScope.() -> Unit)? = null,
     content: @Composable BoxScope.() -> Unit,
 ) {
     Row(
@@ -44,26 +44,32 @@ fun AppToolbar(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxHeight(1f)
-                .widthIn(min = MIN_ICON_WIDTH.dp),
-            contentAlignment = Alignment.Center,
-            content = startContent
-        )
+        startContent?.let {
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight(1f)
+                    .widthIn(min = MIN_ICON_WIDTH.dp),
+                contentAlignment = Alignment.Center,
+                content = it
+            )
+        }
+
         Box(
             modifier = Modifier.weight(1f),
             contentAlignment = Alignment.Center
         ) {
             content()
         }
-        Box(
-            modifier = Modifier
-                .fillMaxHeight(1f)
-                .widthIn(min = MIN_ICON_WIDTH.dp),
-            contentAlignment = Alignment.Center,
-            content = endContent
-        )
+
+        endContent?.let {
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight(1f)
+                    .widthIn(min = MIN_ICON_WIDTH.dp),
+                contentAlignment = Alignment.Center,
+                content = it
+            )
+        }
     }
 }
 
@@ -74,16 +80,16 @@ fun AppToolbar(
 @Composable
 fun AppToolbar(
     modifier: Modifier = Modifier,
-    startIcon: ToolbarIcons.Left? = null,
+    startIcon: AppToolbarIcons.Left? = null,
     startIconClick: () -> Unit = {},
-    endIcon: ToolbarIcons.Right? = null,
+    endIcon: AppToolbarIcons.Right? = null,
     endIconClick: () -> Unit = {},
     content: @Composable BoxScope.() -> Unit,
 ) {
     AppToolbar(
         modifier = modifier,
-        startContent = {
-            startIcon?.let {
+        startContent = startIcon?.let {
+            {
                 ToolbarIcon(
                     onClick = startIconClick,
                     painter = it.painter,
@@ -91,8 +97,8 @@ fun AppToolbar(
                 )
             }
         },
-        endContent = {
-            endIcon?.let {
+        endContent = endIcon?.let {
+            {
                 ToolbarIcon(
                     onClick = endIconClick,
                     painter = it.painter,
@@ -111,9 +117,9 @@ fun AppToolbar(
 fun AppToolbar(
     text: String,
     modifier: Modifier = Modifier,
-    startIcon: ToolbarIcons.Left? = null,
+    startIcon: AppToolbarIcons.Left? = null,
     startIconClick: () -> Unit = {},
-    endIcon: ToolbarIcons.Right? = null,
+    endIcon: AppToolbarIcons.Right? = null,
     endIconClick: () -> Unit = {},
 ) {
     AppToolbar(
@@ -143,17 +149,17 @@ fun AppToolbar(
 fun AppToolbar(
     text: String,
     modifier: Modifier = Modifier,
-    startIcon: ToolbarIcons.Left? = null,
+    startIcon: AppToolbarIcons.Left? = null,
     startIconClick: () -> Unit = {},
-    firstEndIcon: ToolbarIcons.Right,
+    firstEndIcon: AppToolbarIcons.Right,
     firstEndIconClick: () -> Unit,
-    secondEndIcon: ToolbarIcons.Right,
+    secondEndIcon: AppToolbarIcons.Right,
     secondEndIconClick: () -> Unit,
 ) {
     AppToolbar(
         modifier = modifier,
-        startContent = {
-            startIcon?.let {
+        startContent = startIcon?.let {
+            {
                 ToolbarIcon(
                     onClick = startIconClick,
                     painter = it.painter,
@@ -218,8 +224,8 @@ private fun AppToolbarPreviewText() {
         AppToolbar(
             modifier = Modifier.windowInsetsPadding(WindowInsets.statusBars),
             text = "Instagram",
-            startIcon = ToolbarIcons.Back,
-            endIcon = ToolbarIcons.Chat
+            startIcon = AppToolbarIcons.Back,
+            endIcon = AppToolbarIcons.Chat
         )
     }
 }
@@ -231,10 +237,10 @@ private fun AppToolbarPreview() {
         AppToolbar(
             modifier = Modifier.windowInsetsPadding(WindowInsets.statusBars),
             text = "Instagram",
-            startIcon = ToolbarIcons.Back,
-            firstEndIcon = ToolbarIcons.Hearth,
+            startIcon = AppToolbarIcons.Back,
+            firstEndIcon = AppToolbarIcons.Hearth,
             firstEndIconClick = {},
-            secondEndIcon = ToolbarIcons.Chat,
+            secondEndIcon = AppToolbarIcons.Chat,
             secondEndIconClick = {}
         )
     }
