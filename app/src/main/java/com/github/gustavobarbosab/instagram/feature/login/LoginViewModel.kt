@@ -1,23 +1,29 @@
 package com.github.gustavobarbosab.instagram.feature.login
 
+import android.util.Log
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
-class LoginViewModel @Inject constructor() : ViewModel() {
+private const val LOGIN_STATE = "LOGIN_STATE"
 
-    private val _uiState = MutableStateFlow(LoginUiState())
-    val uiState: StateFlow<LoginUiState> = _uiState.asStateFlow()
+@HiltViewModel
+class LoginViewModel @Inject constructor(
+    private val savedStateHandle: SavedStateHandle
+) : ViewModel() {
+
+    val uiState: StateFlow<LoginUiState> = savedStateHandle.getStateFlow(
+        LOGIN_STATE,
+        LoginUiState()
+    )
 
     fun updateEmail(email: String) {
-        _uiState.value = _uiState.value.copy(
+        savedStateHandle[LOGIN_STATE] = uiState.value.copy(
             email = email,
             emailError = null,
             errorMessage = null
@@ -25,7 +31,7 @@ class LoginViewModel @Inject constructor() : ViewModel() {
     }
 
     fun updatePassword(password: String) {
-        _uiState.value = _uiState.value.copy(
+        savedStateHandle[LOGIN_STATE] = uiState.value.copy(
             password = password,
             passwordError = null,
             errorMessage = null
@@ -33,14 +39,14 @@ class LoginViewModel @Inject constructor() : ViewModel() {
     }
 
     fun login() {
-        val currentState = _uiState.value
+        val currentState = uiState.value
 
         // Validate form
         val emailError = validateEmail(currentState.email)
         val passwordError = validatePassword(currentState.password)
 
         if (emailError != null || passwordError != null) {
-            _uiState.value = currentState.copy(
+            savedStateHandle[LOGIN_STATE] = currentState.copy(
                 emailError = emailError,
                 passwordError = passwordError
             )
@@ -48,7 +54,7 @@ class LoginViewModel @Inject constructor() : ViewModel() {
         }
 
         // Start loading
-        _uiState.value = currentState.copy(
+        savedStateHandle[LOGIN_STATE] = currentState.copy(
             isLoading = true,
             errorMessage = null
         )
@@ -56,34 +62,39 @@ class LoginViewModel @Inject constructor() : ViewModel() {
         viewModelScope.launch {
             try {
                 // Simulate network call
-                delay(2000)
+                Log.d("Teste", "1 = Iniciando pagamento")
+                delay(3000)
+                Log.d("Teste", "2 = recebou sucesso no pagamento")
 
                 // Mock login logic - replace with actual API call
                 val loginSuccess = performLogin(currentState.email, currentState.password)
 
                 if (loginSuccess) {
-                    _uiState.value = _uiState.value.copy(
+                    savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                         isLoading = false,
                         isLoginSuccessful = true,
                         errorMessage = null
                     )
+                    Log.d("Teste", "3 = pagou com sucesso")
                 } else {
-                    _uiState.value = _uiState.value.copy(
+                    savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                         isLoading = false,
                         errorMessage = "Invalid email or password. Please try again."
                     )
+                    Log.d("Teste", "3 = Falha no pagamento")
                 }
             } catch (e: Exception) {
-                _uiState.value = _uiState.value.copy(
+                savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                     isLoading = false,
                     errorMessage = "Login failed. Please check your connection and try again."
                 )
+                Log.d("Teste", "3 = Erro $e")
             }
         }
     }
 
     fun loginWithFacebook() {
-        _uiState.value = _uiState.value.copy(
+        savedStateHandle[LOGIN_STATE] = uiState.value.copy(
             isLoading = true,
             errorMessage = null
         )
@@ -95,19 +106,19 @@ class LoginViewModel @Inject constructor() : ViewModel() {
                 val facebookLoginSuccess = performFacebookLogin()
 
                 if (facebookLoginSuccess) {
-                    _uiState.value = _uiState.value.copy(
+                    savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                         isLoading = false,
                         isLoginSuccessful = true,
                         errorMessage = null
                     )
                 } else {
-                    _uiState.value = _uiState.value.copy(
+                    savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                         isLoading = false,
                         errorMessage = "Facebook login failed. Please try again."
                     )
                 }
             } catch (e: Exception) {
-                _uiState.value = _uiState.value.copy(
+                savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                     isLoading = false,
                     errorMessage = "Facebook login failed. Please try again."
                 )
@@ -118,7 +129,7 @@ class LoginViewModel @Inject constructor() : ViewModel() {
     fun forgotPassword() {
         // Navigate to forgot password screen or show dialog
         // For now, just show a message
-        _uiState.value = _uiState.value.copy(
+        savedStateHandle[LOGIN_STATE] = uiState.value.copy(
             errorMessage = "Forgot password functionality not implemented yet."
         )
     }
@@ -149,5 +160,9 @@ class LoginViewModel @Inject constructor() : ViewModel() {
     private fun performFacebookLogin(): Boolean {
         // Mock Facebook login - replace with actual Facebook SDK integration
         return true
+    }
+
+    fun loginSuccessfulHandled() {
+        savedStateHandle[LOGIN_STATE] = uiState.value.copy(isLoginSuccessful = false)
     }
 }

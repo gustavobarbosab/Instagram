@@ -7,17 +7,18 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.github.gustavobarbosab.instagram.common.extensions.isNotNullOrBlank
 import com.github.gustavobarbosab.instagram.core.navigation.Route
 import com.github.gustavobarbosab.instagram.feature.home.HomeRoute
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 
@@ -33,7 +34,7 @@ fun LoginScreen(
     onNavigateToSignUp: () -> Unit = {},
     viewModel: LoginViewModel = viewModel()
 ) {
-    val uiState by viewModel.uiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val keyboardController = LocalSoftwareKeyboardController.current
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
@@ -46,14 +47,15 @@ fun LoginScreen(
                     duration = SnackbarDuration.Short
                 )
             }
-
         }
     }
 
     LaunchedEffect(uiState.isLoginSuccessful) {
         if (uiState.isLoginSuccessful) {
+            delay(3000)
             navController.popBackStack()
             navController.navigate(HomeRoute)
+            viewModel.loginSuccessfulHandled()
         }
     }
 
