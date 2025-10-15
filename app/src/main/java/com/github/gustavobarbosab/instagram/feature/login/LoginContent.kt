@@ -166,10 +166,8 @@ private fun Preview() {
         email = "",
         password = "",
         isLoading = false,
-        isLoginSuccessful = false,
         emailError = null,
         passwordError = null,
-        errorMessage = null
     )
 
     InstagramTheme {

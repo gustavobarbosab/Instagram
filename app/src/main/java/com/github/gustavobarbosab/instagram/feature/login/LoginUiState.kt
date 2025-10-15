@@ -11,12 +11,7 @@ data class LoginUiState(
     val password: String = "",
     val passwordError: String? = null,
     val isLoading: Boolean = false,
-
-    // Single actions
-    val errorMessage: String? = null,
-    val isLoginSuccessful: Boolean = false,
 ) : Parcelable
-
 
 // Problema Checkout
 // Usuário clicou para finalizar o pagamento

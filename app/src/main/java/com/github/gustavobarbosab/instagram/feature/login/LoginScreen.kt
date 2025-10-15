@@ -33,27 +33,23 @@ fun LoginScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val keyboardController = LocalSoftwareKeyboardController.current
-    val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(uiState.errorMessage) {
-        if (uiState.errorMessage.isNotNullOrBlank()) {
-            scope.launch {
-                snackbarHostState.showSnackbar(
-                    message = uiState.errorMessage.orEmpty(),
+    LaunchedEffect(true) {
+        viewModel.uiEvent.collect { event ->
+            when (event) {
+                is LoginUiEvents.FeedbackMessage -> snackbarHostState.showSnackbar(
+                    message = event.message,
                     duration = SnackbarDuration.Short
                 )
-            }
-        }
-    }
 
-    LaunchedEffect(uiState.isLoginSuccessful) {
-        if (uiState.isLoginSuccessful) {
-            Log.d("Teste", "esperando 4 segundos antes de navegar")
-            delay(4000)
-            navController.popBackStack()
-            navController.navigate(HomeRoute)
-            viewModel.loginSuccessfulHandled()
+                LoginUiEvents.LoginSuccessful -> {
+                    Log.d("Teste", "Aguardando 4 segundos para redirecionar")
+                    delay(4000)
+                    navController.popBackStack()
+                    navController.navigate(HomeRoute)
+                }
+            }
         }
     }
 

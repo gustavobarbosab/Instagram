@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,11 +24,13 @@ class LoginViewModel @Inject constructor(
         LoginUiState()
     )
 
+    private val _uiEvent = MutableSharedFlow<LoginUiEvents>()
+    val uiEvent = _uiEvent.asSharedFlow()
+
     fun updateEmail(email: String) {
         savedStateHandle[LOGIN_STATE] = uiState.value.copy(
             email = email,
             emailError = null,
-            errorMessage = null
         )
     }
 
@@ -34,7 +38,6 @@ class LoginViewModel @Inject constructor(
         savedStateHandle[LOGIN_STATE] = uiState.value.copy(
             password = password,
             passwordError = null,
-            errorMessage = null
         )
     }
 
@@ -56,7 +59,6 @@ class LoginViewModel @Inject constructor(
         // Start loading
         savedStateHandle[LOGIN_STATE] = currentState.copy(
             isLoading = true,
-            errorMessage = null
         )
 
         viewModelScope.launch {
@@ -72,21 +74,28 @@ class LoginViewModel @Inject constructor(
                 if (loginSuccess) {
                     savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                         isLoading = false,
-                        isLoginSuccessful = true,
-                        errorMessage = null
                     )
+                    _uiEvent.emit(LoginUiEvents.LoginSuccessful)
                     Log.d("Teste", "3 = pagou com sucesso")
                 } else {
                     savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                         isLoading = false,
-                        errorMessage = "Invalid email or password. Please try again."
+                    )
+                    _uiEvent.emit(
+                        LoginUiEvents.FeedbackMessage(
+                            "Invalid email or password. Please try again."
+                        )
                     )
                     Log.d("Teste", "3 = Falha no pagamento")
                 }
             } catch (e: Exception) {
                 savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                     isLoading = false,
-                    errorMessage = "Login failed. Please check your connection and try again."
+                )
+                _uiEvent.emit(
+                    LoginUiEvents.FeedbackMessage(
+                        "Login failed. Please check your connection and try again."
+                    )
                 )
                 Log.d("Teste", "3 = Erro $e")
             }
@@ -96,7 +105,6 @@ class LoginViewModel @Inject constructor(
     fun loginWithFacebook() {
         savedStateHandle[LOGIN_STATE] = uiState.value.copy(
             isLoading = true,
-            errorMessage = null
         )
 
         viewModelScope.launch {
@@ -108,19 +116,22 @@ class LoginViewModel @Inject constructor(
                 if (facebookLoginSuccess) {
                     savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                         isLoading = false,
-                        isLoginSuccessful = true,
-                        errorMessage = null
                     )
+                    _uiEvent.emit(LoginUiEvents.LoginSuccessful)
                 } else {
                     savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                         isLoading = false,
-                        errorMessage = "Facebook login failed. Please try again."
                     )
+
                 }
             } catch (e: Exception) {
                 savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                     isLoading = false,
-                    errorMessage = "Facebook login failed. Please try again."
+                )
+                _uiEvent.emit(
+                    LoginUiEvents.FeedbackMessage(
+                        "Facebook login failed. Please try again."
+                    )
                 )
             }
         }
@@ -129,9 +140,13 @@ class LoginViewModel @Inject constructor(
     fun forgotPassword() {
         // Navigate to forgot password screen or show dialog
         // For now, just show a message
-        savedStateHandle[LOGIN_STATE] = uiState.value.copy(
-            errorMessage = "Forgot password functionality not implemented yet."
-        )
+        viewModelScope.launch {
+            _uiEvent.emit(
+                LoginUiEvents.FeedbackMessage(
+                    "Forgot password functionality not implemented yet."
+                )
+            )
+        }
     }
 
     private fun validateEmail(email: String): String? {
@@ -160,9 +175,5 @@ class LoginViewModel @Inject constructor(
     private fun performFacebookLogin(): Boolean {
         // Mock Facebook login - replace with actual Facebook SDK integration
         return true
-    }
-
-    fun loginSuccessfulHandled() {
-        savedStateHandle[LOGIN_STATE] = uiState.value.copy(isLoginSuccessful = false)
     }
 }
