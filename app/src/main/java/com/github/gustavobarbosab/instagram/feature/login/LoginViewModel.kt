@@ -75,7 +75,7 @@ class LoginViewModel @Inject constructor(
                     savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                         isLoading = false,
                     )
-                    _uiEvent.emit(LoginUiEvents.LoginSuccessful)
+                    _uiEvent.emit(LoginUiEvents.LoginSuccessful(delay = 4000))
                     Log.d("Teste", "3 = pagou com sucesso")
                 } else {
                     savedStateHandle[LOGIN_STATE] = uiState.value.copy(
@@ -117,7 +117,7 @@ class LoginViewModel @Inject constructor(
                     savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                         isLoading = false,
                     )
-                    _uiEvent.emit(LoginUiEvents.LoginSuccessful)
+                    _uiEvent.emit(LoginUiEvents.LoginSuccessful(delay = 4000))
                 } else {
                     savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                         isLoading = false,
