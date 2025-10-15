@@ -73,6 +73,7 @@ class LoginViewModel @Inject constructor(
                     savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                         isLoading = false,
                         isLoginSuccessful = true,
+                        redirectionDelay = 4000,
                         errorMessage = null
                     )
                     Log.d("Teste", "3 = pagou com sucesso")
@@ -109,6 +110,7 @@ class LoginViewModel @Inject constructor(
                     savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                         isLoading = false,
                         isLoginSuccessful = true,
+                        redirectionDelay = 4000,
                         errorMessage = null
                     )
                 } else {
@@ -163,6 +165,15 @@ class LoginViewModel @Inject constructor(
     }
 
     fun loginSuccessfulHandled() {
-        savedStateHandle[LOGIN_STATE] = uiState.value.copy(isLoginSuccessful = false)
+        savedStateHandle[LOGIN_STATE] = uiState.value.copy(
+            isLoginSuccessful = false,
+            redirectionDelay = 0
+        )
+    }
+
+    fun clearDelay() {
+        savedStateHandle[LOGIN_STATE] = uiState.value.copy(
+            redirectionDelay = 0
+        )
     }
 }

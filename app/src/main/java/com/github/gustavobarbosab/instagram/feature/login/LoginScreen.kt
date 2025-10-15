@@ -49,8 +49,10 @@ fun LoginScreen(
 
     LaunchedEffect(uiState.isLoginSuccessful) {
         if (uiState.isLoginSuccessful) {
-            Log.d("Teste", "esperando 4 segundos antes de navegar")
-            delay(4000)
+            val delay = uiState.redirectionDelay
+            viewModel.clearDelay()
+            Log.d("Teste", "esperando ${delay}ms antes de navegar")
+            delay(uiState.redirectionDelay)
             navController.popBackStack()
             navController.navigate(HomeRoute)
             viewModel.loginSuccessfulHandled()

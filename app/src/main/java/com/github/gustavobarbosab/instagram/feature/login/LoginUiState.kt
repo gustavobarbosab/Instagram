@@ -15,6 +15,7 @@ data class LoginUiState(
     // Single actions
     val errorMessage: String? = null,
     val isLoginSuccessful: Boolean = false,
+    val redirectionDelay: Long = 0
 ) : Parcelable
 
 
