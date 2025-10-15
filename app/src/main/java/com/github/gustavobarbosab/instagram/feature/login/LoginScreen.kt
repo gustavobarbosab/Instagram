@@ -43,14 +43,18 @@ fun LoginScreen(
                     duration = SnackbarDuration.Short
                 )
 
-                LoginUiEvents.LoginSuccessful -> {
-                    Log.d("Teste", "Aguardando 4 segundos para redirecionar")
-                    delay(4000)
+                is LoginUiEvents.LoginSuccessful -> {
+                    Log.d("Teste", "Aguardando ${event.delay}ms para redirecionar")
+                    delay(event.delay)
                     navController.popBackStack()
                     navController.navigate(HomeRoute)
                 }
             }
         }
+    }
+
+    LaunchedEffect(true) {
+        viewModel.initScreen()
     }
 
     LoginContent(
