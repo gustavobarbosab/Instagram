@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 private const val LOGIN_STATE = "LOGIN_STATE"
+private const val LOGIN_SUCCESS = "LOGIN_SUCCESS"
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
@@ -39,6 +40,15 @@ class LoginViewModel @Inject constructor(
             password = password,
             passwordError = null,
         )
+    }
+
+    fun initScreen() {
+        val isLoggedIn = savedStateHandle.get<Boolean>(LOGIN_SUCCESS)
+        if (isLoggedIn == true) {
+            viewModelScope.launch {
+                _uiEvent.emit(LoginUiEvents.LoginSuccessful(delay = 0))
+            }
+        }
     }
 
     fun login() {
@@ -76,6 +86,7 @@ class LoginViewModel @Inject constructor(
                         isLoading = false,
                     )
                     _uiEvent.emit(LoginUiEvents.LoginSuccessful(delay = 4000))
+                    savedStateHandle[LOGIN_SUCCESS] = true
                     Log.d("Teste", "3 = pagou com sucesso")
                 } else {
                     savedStateHandle[LOGIN_STATE] = uiState.value.copy(
@@ -118,6 +129,7 @@ class LoginViewModel @Inject constructor(
                         isLoading = false,
                     )
                     _uiEvent.emit(LoginUiEvents.LoginSuccessful(delay = 4000))
+                    savedStateHandle[LOGIN_SUCCESS] = true
                 } else {
                     savedStateHandle[LOGIN_STATE] = uiState.value.copy(
                         isLoading = false,
