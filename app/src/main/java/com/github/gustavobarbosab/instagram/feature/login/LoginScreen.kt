@@ -53,10 +53,6 @@ fun LoginScreen(
         }
     }
 
-    LaunchedEffect(true) {
-        viewModel.initScreen()
-    }
-
     LoginContent(
         uiState = uiState,
         snackbarHostState = snackbarHostState,
