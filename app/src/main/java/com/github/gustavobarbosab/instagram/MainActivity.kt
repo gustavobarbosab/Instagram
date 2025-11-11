@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.compose.runtime.remember
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavGraph
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -19,11 +17,10 @@ import com.github.gustavobarbosab.instagram.feature.home.HomeRoute
 import com.github.gustavobarbosab.instagram.feature.home.HomeScreen
 import com.github.gustavobarbosab.instagram.feature.login.LoginRoute
 import com.github.gustavobarbosab.instagram.feature.login.LoginScreen
-import com.github.gustavobarbosab.instagram.feature.login.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
-    val viewModel by viewModels<LoginViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,13 +32,14 @@ class MainActivity : ComponentActivity() {
                 val navGraph: NavGraph = remember(navController) {
                     navController.createGraph(startDestination = LoginRoute::class) {
                         composable(route = LoginRoute::class) {
-                            LoginScreen(
-                                navController,
-                                viewModel = ViewModelProvider(owner = it)[LoginViewModel::class.java]
-                            )
+                            LoginScreen(navController)
                         }
-                        composable(route = HomeRoute::class) { HomeScreen(navController) }
-                        composable(route = ChatInboxRoute::class) { ChatInboxScreen(navController) }
+                        composable(route = HomeRoute::class) {
+                            HomeScreen(navController)
+                        }
+                        composable(route = ChatInboxRoute::class) {
+                            ChatInboxScreen(navController = navController)
+                        }
                     }
                 }
                 NavHost(navController = navController, graph = navGraph)

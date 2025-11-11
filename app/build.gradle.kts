@@ -63,8 +63,12 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.kotlinx.serialization)
     implementation(libs.navigation.compose)
+    implementation(libs.okhttp)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.kotlinx.serialization)
 
     // Hilt dependencies
     implementation(libs.android.hilt)
     ksp(libs.android.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 }
