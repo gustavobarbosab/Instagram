@@ -42,6 +42,12 @@ android {
         compose = true
         buildConfig = true
     }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -54,13 +60,13 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    testImplementation(libs.junit)
+    implementation(libs.androidx.junit.ktx)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
     implementation(libs.kotlinx.serialization)
     implementation(libs.navigation.compose)
     implementation(libs.okhttp)
@@ -71,4 +77,11 @@ dependencies {
     implementation(libs.android.hilt)
     ksp(libs.android.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+
+    // Tests
+    testImplementation(libs.mockk)
+    testImplementation(libs.androidx.compose.ui.test.junit4)
+    testImplementation(libs.androidx.compose.ui.tooling)
+    testImplementation(libs.androidx.test.core)
+    testImplementation(libs.robolectric)
 }
